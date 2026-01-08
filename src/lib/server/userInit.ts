@@ -1,8 +1,7 @@
-import chalk from 'chalk';
-import { auth } from '$lib/server/auth';
-import { db } from '$lib/server/db';
 import { user } from '$lib/server/db/schema';
-import { migrate } from 'drizzle-orm/libsql/migrator';
+import chalk from 'chalk';
+import { migrate } from 'drizzle-orm/bun-sqlite/migrator';
+import { db } from './db';
 
 export async function userInit() {
 	console.log(chalk.green.bold('Welcome to RedCrafter07 Link!'));
@@ -20,6 +19,8 @@ export async function userInit() {
 		});
 
 		console.log(chalk.bold.bgWhite('>'), chalk.blue('Creating admin user...'));
+
+		const { auth } = await import('$lib/server/auth');
 
 		const ctx = await auth.$context;
 		const authAdapter = ctx.internalAdapter;
