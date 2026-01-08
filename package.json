@@ -33,6 +33,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
+		"prebuild": "bun db:gen-auth && bun db:generate",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
@@ -45,7 +46,6 @@
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
 		"db:studio": "drizzle-kit studio",
-		"prepackage": "bun db:gen-auth && bun db:generate",
 		"package": "echo \"Hi!\""
 	},
 	"type": "module"
