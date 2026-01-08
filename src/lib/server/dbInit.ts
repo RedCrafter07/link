@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import { migrate } from 'drizzle-orm/bun-sqlite/migrator';
 import { db } from './db';
 
-export async function userInit() {
+export async function dbInit() {
 	console.log(chalk.green.bold('Welcome to RedCrafter07 Link!'));
 	try {
 		await db.select().from(user);
