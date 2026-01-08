@@ -1,8 +1,10 @@
 import { building } from '$app/environment';
 import { userInit } from '$lib/server/userInit';
 import { svelteKitHandler } from 'better-auth/svelte-kit';
+import chalk from 'chalk';
 
 export async function init() {
+	chalk.level = 3;
 	await userInit();
 }
 
