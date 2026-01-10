@@ -17,5 +17,5 @@ export const load = async ({ url }) => {
 		return redirect(307, query[0].to);
 	}
 
-	return error(404, 'Page not found');
+	return error(404, 'No page or redirect found');
 };
