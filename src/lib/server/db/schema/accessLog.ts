@@ -5,7 +5,9 @@ import { redirect } from './redirect';
 export const accessLog = sqliteTable(
 	'access_log',
 	{
-		url: text().notNull(),
+		url: text()
+			.notNull()
+			.references(() => redirect.from, { onDelete: 'cascade' }),
 		accessedAt: integer('accessed_at', { mode: 'timestamp_ms' })
 			.$default(() => new Date())
 			.notNull()
