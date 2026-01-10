@@ -1,5 +1,5 @@
 import { db } from '$lib/server/db/index.js';
-import { redirects } from '$lib/server/db/schema/redirects.js';
+import { redirect as redirects } from '$lib/server/db/schema/redirect.js';
 import { error, redirect } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 

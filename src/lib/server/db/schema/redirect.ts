@@ -2,8 +2,8 @@ import { relations } from 'drizzle-orm';
 import { index, integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 import { user } from './auth';
 
-export const redirects = sqliteTable(
-	'redirects',
+export const redirect = sqliteTable(
+	'redirect',
 	{
 		from: text().unique().notNull(),
 		to: text().notNull(),
@@ -20,9 +20,9 @@ export const redirects = sqliteTable(
 	(table) => [index('url_idx').on(table.from)]
 );
 
-export const redirectRelations = relations(redirects, ({ one }) => ({
+export const redirectRelations = relations(redirect, ({ one }) => ({
 	user: one(user, {
 		references: [user.id],
-		fields: [redirects.addedBy]
+		fields: [redirect.addedBy]
 	})
 }));
