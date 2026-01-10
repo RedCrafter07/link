@@ -12,7 +12,9 @@ declare global {
 			user: User;
 		}
 		// interface PageData {}
-		// interface PageState {}
+		interface PageState {
+			showModal: boolean;
+		}
 		// interface Platform {}
 	}
 }
