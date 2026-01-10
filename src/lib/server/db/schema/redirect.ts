@@ -14,8 +14,7 @@ export const redirect = sqliteTable(
 		updatedAt: integer('updated_at', { mode: 'timestamp_ms' })
 			.notNull()
 			.$default(() => new Date())
-			.$onUpdate(() => new Date()),
-		accessCount: integer('access_count').default(0).notNull()
+			.$onUpdate(() => new Date())
 	},
 	(table) => [index('url_idx').on(table.from)]
 );
