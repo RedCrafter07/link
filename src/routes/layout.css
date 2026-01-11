@@ -61,3 +61,7 @@
 body {
 	@apply bg-base-1 text-content-1;
 }
+
+button {
+	@apply cursor-pointer;
+}
