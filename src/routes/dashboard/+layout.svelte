@@ -3,6 +3,7 @@
 	import { resolve } from '$app/paths';
 	import { authClient } from '$lib/client/auth';
 	import IconLogout from '~icons/tabler/logout';
+	import IconLink from '~icons/tabler/link';
 
 	const { children } = $props();
 </script>
@@ -13,8 +14,9 @@
 			onclick={() => {
 				goto(resolve('/dashboard'));
 			}}
-			class="rounded-xl p-2 text-2xl tracking-wide transition-all duration-150 hover:bg-overlay/50 active:scale-95"
+			class="flex flex-row items-center gap-2 rounded-xl p-2 text-2xl font-black tracking-wider uppercase transition-all duration-150 hover:bg-overlay/50 active:scale-95"
 		>
+			<IconLink />
 			Link
 		</button>
 		<button
