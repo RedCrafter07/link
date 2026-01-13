@@ -1,12 +1,10 @@
 import { db } from '$lib/server/db/index.js';
 import { redirect as redirectTable } from '$lib/server/db/schema/redirect.js';
-import { error, redirect } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 import z from 'zod';
 
-export const load = async ({ locals }) => {
-	if (!locals.session) return redirect(307, '/auth');
-
+export const load = async () => {
 	const redirects = await db.query.redirect.findMany({
 		with: {
 			user: true,
