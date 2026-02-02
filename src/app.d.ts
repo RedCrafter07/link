@@ -1,6 +1,7 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
 
-import type { Session, User } from 'better-auth';
+import type { Session } from 'better-auth';
+import type { UserWithRole } from 'better-auth/plugins';
 import 'unplugin-icons/types/svelte';
 
 // for information about these interfaces
@@ -9,7 +10,7 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			session: Session;
-			user: User;
+			user: UserWithRole;
 		}
 		// interface PageData {}
 		interface PageState {
