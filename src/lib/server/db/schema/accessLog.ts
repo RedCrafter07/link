@@ -1,23 +1,23 @@
 import { relations } from 'drizzle-orm';
-import { index, integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import { index, integer, sqliteTable } from 'drizzle-orm/sqlite-core';
 import { redirect } from './redirect';
 
 export const accessLog = sqliteTable(
 	'access_log',
 	{
-		url: text()
+		urlId: integer('url_id')
 			.notNull()
-			.references(() => redirect.from, { onDelete: 'cascade' }),
+			.references(() => redirect.id, { onDelete: 'cascade' }),
 		accessedAt: integer('accessed_at', { mode: 'timestamp_ms' })
 			.$default(() => new Date())
 			.notNull()
 	},
-	(table) => [index('redir_accessLog_idx').on(table.url)]
+	(table) => [index('redir_accessLog_idx').on(table.urlId)]
 );
 
 export const redirectRelation = relations(accessLog, ({ one }) => ({
 	redirect: one(redirect, {
-		fields: [accessLog.url],
-		references: [redirect.from]
+		fields: [accessLog.urlId],
+		references: [redirect.id]
 	})
 }));

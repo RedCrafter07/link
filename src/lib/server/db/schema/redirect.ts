@@ -6,7 +6,8 @@ import { accessLog } from './accessLog';
 export const redirect = sqliteTable(
 	'redirect',
 	{
-		from: text().notNull().primaryKey(),
+		id: integer().primaryKey().notNull(),
+		from: text().notNull(),
 		to: text().notNull(),
 		addedBy: text('added_by').notNull(),
 		createdAt: integer('created_at', { mode: 'timestamp_ms' })
